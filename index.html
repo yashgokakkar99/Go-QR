@@ -12,6 +12,15 @@
       let qrimg = document.getElementById("qrimg");
       qrimg.src = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + qrtext.value;
       imgbox.classList.add("show-img");
+      printBtn.style.display = "block";
+    }
+
+    function printQRCode() {
+      let qrimg = document.getElementById("qrimg");
+      let printWindow = window.open('', '', 'width=500,height=500');
+      printWindow.document.write('<img src="' + qrimg.src + '">');
+      printWindow.document.close();
+      printWindow.print();
     }
   </script>
 </head>
@@ -19,10 +28,11 @@
   <div class="main_container">
     <label for="qrtext">Enter URL : </label>
     <input type="text" id="qrtext">
-    <div id="imgbox">
+    <div id="imgbox" class="qr-image-container">
       <img src="" id="qrimg"> 
     </div>
     <button onclick="qrGenerator()">Generate QR Code</button>
+    <button id="printBtn" onclick="printQRCode()" style="display:none;">Print QR Code</button>
   </div>
 </body>
 </html>
