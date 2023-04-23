@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Go-QR</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    function qrGenerator() {
+      let qrtext = document.getElementById("qrtext");
+      let qrimg = document.getElementById("qrimg");
+      qrimg.src = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + qrtext.value;
+    }
+  </script>
+</head>
+<body>
+  <div class="main_container">
+    <label for="qrtext">Enter URL : </label>
+    <input type="text" id="qrtext">
+    <div id="imgbox">
+      <img src="" id="qrimg"> 
+    </div>
+    <button onclick="qrGenerator()">Generate QR Code</button>
+  </div>
+</body>
+</html>
